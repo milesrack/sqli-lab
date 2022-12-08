@@ -1,0 +1,36 @@
+services:
+  sqli_lab_php:
+    container_name: sqli_lab_php
+    restart: always
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    ports:
+      - '8080:80'
+    expose:
+      - '80'
+    working_dir: /var/www/html
+    networks:
+      - sqli_lab_net      
+  sqli_lab_mysql:
+    container_name: sqli_lab_mysql
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD='root'
+      - MYSQ_DATABASE='sqli_demo'
+    ports:
+      - '3307:3306'
+    expose:
+      - '3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./sql/src/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - sqli_lab_net
+volumes:
+  db:
+    driver: local
+networks:
+  sqli_lab_net:
+    driver: bridge
