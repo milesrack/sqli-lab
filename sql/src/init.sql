@@ -1,4 +1,5 @@
-GRANT ALL PRIVILEGES ON *.* TO "root"@"%" WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO "root"@"%";
+UPDATE mysql.user SET host="%" WHERE user="root";
 DROP DATABASE IF EXISTS sqli_demo;
 CREATE DATABASE sqli_demo;
 CREATE TABLE sqli_demo.users(id INT AUTO_INCREMENT PRIMARY KEY, username TEXT, password TEXT, email TEXT);

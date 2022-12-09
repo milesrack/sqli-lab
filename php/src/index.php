@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	
-	$mysqli = new mysqli("sqli_lab_mysql", "root", "root", "sqli_demo");
+	$mysqli = new mysqli("sqli_lab_mysql", "root", "", "sqli_demo");
 	if ($mysqli -> connect_errno) {
 		echo "Failed to connect to MySQL: " . $mysqli->connect_error;
 		exit();

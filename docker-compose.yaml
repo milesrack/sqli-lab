@@ -18,9 +18,6 @@ services:
     container_name: sqli_lab_mysql
     image: mysql:8.0
     restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD='root'
-      - MYSQ_DATABASE='sqli_demo'
     ports:
       - '3307:3306'
     expose:
