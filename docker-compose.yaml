@@ -1,3 +1,5 @@
+version: "3.0"
+
 services:
   sqli_lab_php:
     container_name: sqli_lab_php
@@ -6,7 +8,7 @@ services:
       context: .
       dockerfile: ./php/Dockerfile
     ports:
-      - '8080:80'
+      - '8000:80'
     expose:
       - '80'
     working_dir: /var/www/html
